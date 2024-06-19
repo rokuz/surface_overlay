@@ -1,0 +1,100 @@
+﻿<Window x:Class="SurfaceOverlay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SurfaceOverlay"
+        mc:Ignorable="d"
+        Title="Surface Overlay" Height="220" Width="80" Left="10" Top = "100"
+        Topmost="True"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        IsHitTestVisible="True"
+        SourceInitialized="Window_SourceInitialized">
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="White" />
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="WinSpaceButton" Grid.Column="0" Opacity="0.6" Click="WinSpaceButton_Click">
+                <TextBlock Text="Win+Space" />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="WinJButton" Grid.Column="0" Opacity="0.6" Click="WinJButton_Click">
+                <TextBlock Text="Win+J" />
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CtrlZButton" Grid.Column="0" Opacity="0.6" Click="CtrlZButton_Click">
+                <TextBlock Text="Ctrl+Z" />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CtrlFButton" Grid.Column="0" Opacity="0.6" Click="CtrlFButton_Click">
+                <TextBlock Text="Ctrl+F" />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CtrlCButton" Grid.Column="0" Opacity="0.6" Click="CtrlCButton_Click">
+                <TextBlock Text="Ctrl+C" />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CtrlVButton" Grid.Column="0" Opacity="0.6" Click="CtrlVButton_Click">
+                <TextBlock Text="Ctrl+V" />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="KeyboardButton" Grid.Column="0" Opacity="0.6" Click="KeyboardButton_Click">
+                <TextBlock Text="Keyboard" />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0"  Opacity="0.6" Fill="LightGray" Stroke="Gray" MouseDown="Rectangle_MouseDown"/>
+        </Grid>
+    </Grid>
+</Window>
