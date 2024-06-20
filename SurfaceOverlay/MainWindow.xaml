@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SurfaceOverlay"
         mc:Ignorable="d"
-        Title="Surface Overlay" Height="220" Width="80" Left="10" Top = "100"
+        Title="Surface Overlay" Height="320" Width="100" Left="10" Top = "100"
         Topmost="True"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -15,6 +15,55 @@
     <Window.Background>
         <SolidColorBrush Opacity="0" Color="White" />
     </Window.Background>
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#151525" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Opacity" Value="0.6" />
+            <Setter Property="Margin" Value="5,2.5,5,2.5" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" BorderBrush="White" BorderThickness="1" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" 
+                                                  Content="{TemplateBinding Content}" 
+                                                  HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center"
+                                                  Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="SteelBlue" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="SkyBlue" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Geometry x:Key="KeyboardImage_Geometry">F1 M960,960z M0,0z M120,-120Q87,-120 63.5,-143.5 40,-167 40,-200L40,-720Q40,-753 63.5,-776.5 87,-800 120,-800L840,-800Q873,-800 896.5,-776.5 920,-753 920,-720L920,-200Q920,-167 896.5,-143.5 873,-120 840,-120L120,-120z M120,-200L840,-200 840,-720 120,-720 120,-200z M320,-280L640,-280 640,-320 320,-320 320,-280z M200,-400L280,-400 280,-480 200,-480 200,-400z M360,-400L440,-400 440,-480 360,-480 360,-400z M520,-400L600,-400 600,-480 520,-480 520,-400z M680,-400L760,-400 760,-480 680,-480 680,-400z M200,-560L280,-560 280,-640 200,-640 200,-560z M360,-560L440,-560 440,-640 360,-640 360,-560z M520,-560L600,-560 600,-640 520,-640 520,-560z M680,-560L760,-560 760,-640 680,-640 680,-560z M120,-200L120,-720 120,-200z</Geometry>
+        <DrawingGroup x:Key="KeyboardImage" >
+            <DrawingGroup.Transform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.025" ScaleY="0.025" />
+                </TransformGroup>
+            </DrawingGroup.Transform>
+            <GeometryDrawing Brush="#FFE8EAED" Geometry="{StaticResource KeyboardImage_Geometry}" />
+        </DrawingGroup>
+        <DrawingImage x:Key="KeyboardImage_Drawable" Drawing="{StaticResource KeyboardImage}" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -24,77 +73,78 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.*"/>
         </Grid.RowDefinitions>
-        
-        <Grid Grid.Row="0">
+
+        <Grid Grid.RowSpan="8" MouseDown="Rectangle_MouseDown">
+            <Grid.Background>
+                <SolidColorBrush Color="SteelBlue" Opacity="0.3"/>
+            </Grid.Background>
+        </Grid>
+
+        <Grid Grid.Row="0" Margin="0,2.5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="WinSpaceButton" Grid.Column="0" Opacity="0.6" Click="WinSpaceButton_Click">
+            <Button x:Name="WinSpaceButton" Grid.Column="0" Click="WinSpaceButton_Click">
                 <TextBlock Text="Win+Space" />
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="0,2.5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="WinJButton" Grid.Column="0" Opacity="0.6" Click="WinJButton_Click">
+            <Button x:Name="WinJButton" Grid.Column="0" Click="WinJButton_Click">
                 <TextBlock Text="Win+J" />
             </Button>
         </Grid>
-        
-        <Grid Grid.Row="2">
+
+        <Grid Grid.Row="2" Margin="0,2.5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="CtrlZButton" Grid.Column="0" Opacity="0.6" Click="CtrlZButton_Click">
+            <Button x:Name="CtrlZButton" Grid.Column="0" Click="CtrlZButton_Click">
                 <TextBlock Text="Ctrl+Z" />
             </Button>
         </Grid>
 
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="3" Margin="0,2.5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="CtrlFButton" Grid.Column="0" Opacity="0.6" Click="CtrlFButton_Click">
+            <Button x:Name="CtrlFButton" Grid.Column="0" Click="CtrlFButton_Click">
                 <TextBlock Text="Ctrl+F" />
             </Button>
         </Grid>
 
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="4" Margin="0,2.5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="CtrlCButton" Grid.Column="0" Opacity="0.6" Click="CtrlCButton_Click">
+            <Button x:Name="CtrlCButton" Grid.Column="0" Click="CtrlCButton_Click">
                 <TextBlock Text="Ctrl+C" />
             </Button>
         </Grid>
 
-        <Grid Grid.Row="5">
+        <Grid Grid.Row="5" Margin="0,2.5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="CtrlVButton" Grid.Column="0" Opacity="0.6" Click="CtrlVButton_Click">
+            <Button x:Name="CtrlVButton" Grid.Column="0" Click="CtrlVButton_Click">
                 <TextBlock Text="Ctrl+V" />
             </Button>
         </Grid>
 
-        <Grid Grid.Row="6">
+        <Grid Grid.Row="6" Margin="0,2.5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="KeyboardButton" Grid.Column="0" Opacity="0.6" Click="KeyboardButton_Click">
-                <TextBlock Text="Keyboard" />
+            <Button x:Name="KeyboardButton" Grid.Column="0" Click="KeyboardButton_Click">
+                <Canvas>
+                    <Image Source="{StaticResource KeyboardImage_Drawable}" Canvas.Left="-12" Canvas.Top="-8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Canvas>
             </Button>
-        </Grid>
-
-        <Grid Grid.Row="7">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Rectangle Grid.Column="0"  Opacity="0.6" Fill="LightGray" Stroke="Gray" MouseDown="Rectangle_MouseDown"/>
         </Grid>
     </Grid>
 </Window>
