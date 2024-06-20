@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:SurfaceOverlay"
         mc:Ignorable="d"
         Title="Surface Overlay" Height="320" Width="100" Left="10" Top = "100"
+        MinHeight="220" MinWidth="90"
         Topmost="True"
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
         IsHitTestVisible="True"
-        SourceInitialized="Window_SourceInitialized">
+        SourceInitialized="Window_SourceInitialized"
+        Closing="Window_Closing">
     <Window.Background>
         <SolidColorBrush Opacity="0" Color="White" />
     </Window.Background>
@@ -76,7 +78,7 @@
             <RowDefinition Height="1.*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.RowSpan="8" MouseDown="Rectangle_MouseDown">
+        <Grid Grid.RowSpan="8">
             <Grid.Background>
                 <SolidColorBrush Color="SteelBlue" Opacity="0.3"/>
             </Grid.Background>
@@ -145,6 +147,19 @@
                     <Image Source="{StaticResource KeyboardImage_Drawable}" Canvas.Left="-12" Canvas.Top="-8" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Canvas>
             </Button>
+        </Grid>
+
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" MouseDown="Rectangle_MouseDown">
+                <TextBlock.ContextMenu>
+                    <ContextMenu Name="cm" StaysOpen="false">
+                        <MenuItem Header="Close" Click="Close_OnClick"/>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
+            </TextBlock>
         </Grid>
     </Grid>
 </Window>
