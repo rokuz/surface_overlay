@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 
@@ -30,36 +32,43 @@ namespace SurfaceOverlay
         private void CtrlCButton_Click(object sender, RoutedEventArgs e)
         {
             WindowsAPI.SendCtrlC();
+            HighlightButtonOnClick(sender as Button);
         }
 
         private void CtrlVButton_Click(object sender, RoutedEventArgs e)
         {
             WindowsAPI.SendCtrlV();
+            HighlightButtonOnClick(sender as Button);
         }
 
         private void CtrlZButton_Click(object sender, RoutedEventArgs e)
         {
             WindowsAPI.SendCtrlZ();
+            HighlightButtonOnClick(sender as Button);
         }
 
         private void CtrlFButton_Click(object sender, RoutedEventArgs e)
         {
             WindowsAPI.SendCtrlF();
+            HighlightButtonOnClick(sender as Button);
         }
 
         private void WinJButton_Click(object sender, RoutedEventArgs e)
         {
             WindowsAPI.SendWinJ();
+            HighlightButtonOnClick(sender as Button);
         }
 
         private void WinSpaceButton_Click(object sender, RoutedEventArgs e)
         {
             WindowsAPI.SendWinSpace();
+            HighlightButtonOnClick(sender as Button);
         }
 
         private void KeyboardButton_Click(object sender, RoutedEventArgs e)
         {
             WindowsAPI.ToggleVirtualKeyboard();
+            HighlightButtonOnClick(sender as Button);
         }
 
         private void Close_OnClick(object sender, RoutedEventArgs e)
@@ -102,6 +111,19 @@ namespace SurfaceOverlay
             key.SetValue(WidthKey, Convert.ToInt32(this.Width));
             key.SetValue(HeightKey, Convert.ToInt32(this.Height));
             key.Close();
+        }
+
+        private async void HighlightButtonOnClick(Button button)
+        {
+            // IsPress trigger doesn't work on Surface good enough for some reason
+            // You can barely see change in color, so do it manually.
+            var originalBackground = button.Background;
+            var originalForeground = button.Foreground;
+            button.Background = System.Windows.Media.Brushes.SteelBlue;
+            button.Foreground = System.Windows.Media.Brushes.White;
+            await Task.Delay(180);
+            button.Background = originalBackground;
+            button.Foreground = originalForeground;
         }
     }
 }
