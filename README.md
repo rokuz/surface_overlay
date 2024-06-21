@@ -1,6 +1,9 @@
 Surface Overlay
 ==========
-![Screenshot 2024-06-19 220603](https://github.com/rokuz/surface_overlay/assets/5437220/944914ff-49d7-4bb9-95f7-30c325bbb8b9)
+Simple overlay app that makes your touch-only experience on the Surface tablet a bit more pleasant.
+
+
+![Screenshot 2024-06-20 212649](https://github.com/rokuz/surface_overlay/assets/5437220/79bf27e1-60ae-4c48-bb83-5a4bf432685e)
 
 # License:
 All the code is free-to-use under [MIT License](https://github.com/rokuz/surface_overlay/blob/main/LICENSE.md).
