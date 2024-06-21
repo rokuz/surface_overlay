@@ -8,10 +8,10 @@ Simple overlay app that makes your touch-only experience on the Surface tablet a
 # License:
 All the code is free-to-use under [MIT License](https://github.com/rokuz/surface_overlay/blob/main/LICENSE.md).
 
-# Build
+# Build:
 Open solution and build it in Visual Studio.
 
-# Using pre-built version:
+# Using pre-built app:
 If you'd like to use pre-built app instead of building it yourself, please check [Releases](https://github.com/rokuz/surface_overlay/releases)
 
 You can use single executable, however Windows may complain about untrusted publisher on every launch.
